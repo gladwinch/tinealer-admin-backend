@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule } from '@nestjs/config';
+
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://server-access-12:JcvMopY5U421gbl9@cluster0.cjjdysf.mongodb.net/tinealer_prod?retryWrites=true&w=majority&appName=Cluster0',
-    ),
+    ConfigModule.forRoot(),
+    MongooseModule.forRoot(process.env.MONGO_URI),
   ],
   controllers: [],
   providers: [],
